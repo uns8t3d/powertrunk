@@ -1,10 +1,16 @@
 #include "Latch.h"
+#include "Trunk.h"
+
+#define BCM 2
+#define INTERNAL_BUTTON A1
 
 Latch latch;
+Trunk trunk;
 
 void setup() {
   Serial.begin(115200);
   latch.begin();
+  trunk.begin();
 }
 
 void loop() {
@@ -14,6 +20,10 @@ void loop() {
   if (half_latch && !full_latch && close) {
     latch.close();
   }
+  checkSerialInput(); 
+}
+
+void checkSerialInput() {
   if (Serial.available() > 0) {
     char input = Serial.read();
     if (input == 'S') {

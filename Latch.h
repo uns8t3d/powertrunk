@@ -1,14 +1,14 @@
 #ifndef latch_h
 #define latch_h
 #include <Arduino.h>
-#define CLOSE 5
-#define OPEN 6
+#define CLOSE 11
+#define OPEN 12
 
-#define RATCHET 10
-#define NEUTRAL 7
-#define HALFLATCH 8
-#define FULLLATCH 9
-#define CLOSESWITCH 11
+#define RATCHET 7
+#define NEUTRAL 6
+#define HALFLATCH 3
+#define FULLLATCH 8
+#define CLOSESWITCH 14
 
 
 class Latch {
