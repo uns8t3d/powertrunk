@@ -3,6 +3,7 @@
 
 #define BCM 2
 #define INTERNAL_BUTTON A1
+#define BLOCK A3
 
 Latch latch;
 Trunk trunk;
@@ -11,6 +12,7 @@ void setup() {
   Serial.begin(115200);
   latch.begin();
   trunk.begin();
+  attachInterrupt(digitalPinToInterrupt(BCM), bcm_isr, FALLING);
 }
 
 void loop() {
@@ -56,4 +58,8 @@ void checkSerialInput() {
       latch.close();
     }
   }
+}
+
+void bcm_isr() {
+  Serial.println("Open/Close triggered");
 }
